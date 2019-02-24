@@ -1,29 +1,81 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app" class="app">
+    <aside class="navbar">
+      <div class="logo">
+        <router-link to="/">
+          <font-awesome-icon icon="home" class="icon"/><span class="logo__text">SPA</span>
+        </router-link>
+      </div>
+      <hr>
+      <appNavigation></appNavigation>
+    </aside>
+    <div class="content">
+      <router-view/>
+      <footer class="footer">
+        Footer
+      </footer>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+  import Navigation from './components/navigation'
+  
+  export default {
+    data() {
+      return {}
+    },
+    components: {
+      appNavigation: Navigation
     }
   }
-}
+</script>
+
+<style lang="scss">
+  
+  #app {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    min-width: 200px;
+    align-self: stretch;
+    background: $asideBG;
+    color: #fff;
+  }
+
+  .logo {
+    padding-top: 15px;
+    height: $headerHeight;
+    text-align: center;
+  }
+
+  .icon {
+    font-size: 3em;
+  }
+
+  
+  .logo__text {
+  }
+  
+  .content {
+    flex-grow:1;
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .header {
+    background: #5477ff;
+  }
+  
+  .main {
+    flex-grow: 1;
+  }
+  
+  .footer {
+    background: #5477ff;
+  }
+  
+
 </style>
